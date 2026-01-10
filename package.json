@@ -1,0 +1,16 @@
+{
+  "name": "blog-app-monorepo",
+  "version": "1.0.0",
+  "description": "MERN Stack Blogging Application",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev-both",
+    "dev-both": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

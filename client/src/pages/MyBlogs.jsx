@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { blogAPI } from '../services/api';
 import BlogCard from '../components/BlogCard';

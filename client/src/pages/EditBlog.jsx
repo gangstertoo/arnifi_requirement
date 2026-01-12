@@ -123,50 +123,50 @@ export default function EditBlog() {
             </div>
 
             <div className="form-section">
-              <div className="form-row">
-                <div className="form-group form-group-half">
-                  <label htmlFor="category" className="form-label">Category</label>
-                  <select
-                    id="category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    required
-                    className="category-select"
-                  >
-                    {CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div className="form-group">
+                <label htmlFor="category" className="form-label">Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  required
+                  className="category-select"
+                >
+                  {CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
-                <div className="form-group form-group-half">
-                  <label htmlFor="image" className="form-label">Featured Image</label>
-                  <div className="image-upload-wrapper">
-                    <input
-                      type="file"
-                      id="image"
-                      name="image"
-                      onChange={handleImageChange}
-                      accept="image/*"
-                      className="image-upload-input"
-                    />
-                    <label htmlFor="image" className="image-upload-label">
-                      <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="17 8 12 3 7 8"></polyline>
-                        <line x1="12" y1="3" x2="12" y2="15"></line>
-                      </svg>
-                      <span>{formData.image ? 'Change image' : 'Click to upload image'}</span>
-                    </label>
-                    {formData.image && (
-                      <div className="image-preview">
-                        <img src={formData.image} alt="Preview" />
-                      </div>
-                    )}
-                  </div>
+            <div className="form-section">
+              <div className="form-group">
+                <label htmlFor="image" className="form-label">Featured Image</label>
+                <div className="image-upload-wrapper">
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    onChange={handleImageChange}
+                    accept="image/*"
+                    className="image-upload-input"
+                  />
+                  <label htmlFor="image" className="image-upload-label">
+                    <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span>{formData.image ? 'Change image' : 'Click to upload image'}</span>
+                  </label>
+                  {formData.image && (
+                    <div className="image-preview">
+                      <img src={formData.image} alt="Preview" />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

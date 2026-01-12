@@ -19,10 +19,10 @@ export default function Home() {
           <h1>Welcome to Blog App</h1>
           <p>Share your thoughts, stories, and ideas with the world</p>
           <div className="hero-buttons">
-            <Link to="/login" className="btn btn-primary">
+            <Link to="/login" className="btn btn--primary">
               Login
             </Link>
-            <Link to="/signup" className="btn btn-secondary">
+            <Link to="/signup" className="btn btn--secondary">
               Sign Up
             </Link>
           </div>

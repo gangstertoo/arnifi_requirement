@@ -37,7 +37,7 @@ export default function Login() {
     <div className="auth-container">
       <div className="auth-card">
         <h1>Login</h1>
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && <div className="alert alert--error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>

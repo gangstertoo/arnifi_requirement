@@ -57,7 +57,7 @@ export default function Blogs() {
         </Link>
       </div>
 
-      {error && <div className="alert alert-error">{error}</div>}
+      {error && <div className="alert alert--error">{error}</div>}
 
       <div className="filters-section">
         <div className="filter-group">

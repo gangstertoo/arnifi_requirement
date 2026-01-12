@@ -38,7 +38,7 @@ export default function BlogCard({ blog, onDelete, isMyBlog = false }) {
     <div className="blog-card">
       {blog.image && (
         <div className="blog-image">
-          <img src={blog.image} alt={blog.title} />
+          <img src={blog.image} alt={blog.title} loading="lazy" />
         </div>
       )}
       <div className="blog-content">

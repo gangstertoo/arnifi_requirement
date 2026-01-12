@@ -37,7 +37,7 @@ export default function Signup() {
     <div className="auth-container">
       <div className="auth-card">
         <h1>Sign Up</h1>
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && <div className="alert alert--error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Full Name</label>

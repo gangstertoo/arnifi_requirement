@@ -72,7 +72,7 @@ export default function EditBlog() {
     <div className="blog-form-container">
       <div className="blog-form-card">
         <h1>Edit Blog</h1>
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && <div className="alert alert--error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

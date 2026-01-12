@@ -35,7 +35,7 @@ export default function MyBlogs() {
         </Link>
       </div>
 
-      {error && <div className="alert alert-error">{error}</div>}
+      {error && <div className="alert alert--error">{error}</div>}
 
       {loading ? (
         <div className="loading">Loading your blogs...</div>

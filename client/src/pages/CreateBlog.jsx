@@ -46,7 +46,7 @@ export default function CreateBlog() {
     <div className="blog-form-container">
       <div className="blog-form-card">
         <h1>Create New Blog</h1>
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && <div className="alert alert--error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

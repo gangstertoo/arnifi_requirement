@@ -22,9 +22,7 @@ export default function BlogDetail() {
     setLoading(true);
     setError('');
     try {
-      console.log('Fetching blog with ID:', id);
       const response = await blogAPI.getBlogById(id);
-      console.log('Blog response:', response);
       setBlog(response.data.blog);
     } catch (err) {
       console.error('Error fetching blog:', err);
@@ -64,7 +62,7 @@ export default function BlogDetail() {
       <div className="blog-detail-container">
         <div className="blog-detail-loading">
           <div className="spinner"></div>
-          <p>Loading blog...</p>
+          <p>Loading article...</p>
         </div>
       </div>
     );
@@ -73,13 +71,15 @@ export default function BlogDetail() {
   if (error) {
     return (
       <div className="blog-detail-container">
-        <button onClick={() => navigate('/blogs')} className="back-btn">
-          ← Back to Blogs
-        </button>
-        <div className="alert alert--error">
-          <strong>Error:</strong> {error}
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: 'var(--space-8) var(--space-4)' }}>
+          <button onClick={() => navigate('/blogs')} className="back-btn" style={{ marginBottom: 'var(--space-6)', width: 'auto' }}>
+            ← Back to Blogs
+          </button>
+          <div className="alert alert--error">
+            <strong>Error:</strong> {error}
+          </div>
+          <p>The article could not be loaded. Please try again.</p>
         </div>
-        <p>The blog could not be loaded. Please try again.</p>
       </div>
     );
   }
@@ -87,57 +87,73 @@ export default function BlogDetail() {
   if (!blog) {
     return (
       <div className="blog-detail-container">
-        <button onClick={() => navigate('/blogs')} className="back-btn">
-          ← Back to Blogs
-        </button>
-        <div className="alert alert--error">
-          <strong>Not Found:</strong> Blog not found
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: 'var(--space-8) var(--space-4)' }}>
+          <button onClick={() => navigate('/blogs')} className="back-btn" style={{ marginBottom: 'var(--space-6)', width: 'auto' }}>
+            ← Back to Blogs
+          </button>
+          <div className="alert alert--error">
+            <strong>Not Found:</strong> Article not found
+          </div>
+          <p>The article you're looking for doesn't exist.</p>
         </div>
-        <p>The blog you're looking for doesn't exist.</p>
       </div>
     );
   }
 
   const isAuthor = user?.id === blog.userId._id;
+  const firstLetter = blog.author.charAt(0).toUpperCase();
 
   return (
     <div className="blog-detail-container">
-      <button onClick={() => navigate('/blogs')} className="back-btn">
-        ← Back to Blogs
-      </button>
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div className="blog-detail-header-top">
+          <button onClick={() => navigate('/blogs')} className="back-btn">
+            ← Back to Blogs
+          </button>
+        </div>
 
-      <article className="blog-detail">
-        {blog.image && (
-          <div className="blog-detail-image">
-            <img src={blog.image} alt={blog.title} />
-          </div>
-        )}
+        <article className="blog-detail-article">
+          {blog.image && (
+            <div className="blog-detail-hero-image">
+              <img src={blog.image} alt={blog.title} />
+            </div>
+          )}
 
-        <div className="blog-detail-header">
           <h1 className="blog-detail-title">{blog.title}</h1>
-          
+
+          {blog.content && blog.content.split('\n')[0].length > 100 && (
+            <p className="blog-detail-subtitle">
+              {blog.content.split('\n')[0].substring(0, 150)}...
+            </p>
+          )}
+
           <div className="blog-detail-metadata">
-            <span className="blog-detail-author">By {blog.author}</span>
-            <span className="blog-detail-category">{blog.category}</span>
-            <span className="blog-detail-date">{formatDate(blog.createdAt)}</span>
+            <div className="blog-detail-author-info">
+              <div className="blog-detail-author-avatar">{firstLetter}</div>
+              <div className="blog-detail-author-text">
+                <div className="blog-detail-author-name">{blog.author}</div>
+                <div className="blog-detail-author-date">{formatDate(blog.createdAt)}</div>
+              </div>
+            </div>
+            <span className="blog-detail-category-badge">{blog.category}</span>
           </div>
-        </div>
 
-        <div className="blog-detail-content">
-          {blog.content}
-        </div>
-
-        {isAuthor && (
-          <div className="blog-detail-actions">
-            <button onClick={handleEdit} className="edit-btn">
-              Edit Blog
-            </button>
-            <button onClick={handleDelete} className="delete-btn">
-              Delete Blog
-            </button>
+          <div className="blog-detail-content">
+            {blog.content}
           </div>
-        )}
-      </article>
+
+          {isAuthor && (
+            <div className="blog-detail-actions">
+              <button onClick={handleEdit} className="edit-btn">
+                ✏️ Edit Article
+              </button>
+              <button onClick={handleDelete} className="delete-btn">
+                🗑️ Delete Article
+              </button>
+            </div>
+          )}
+        </article>
+      </div>
     </div>
   );
 }

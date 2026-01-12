@@ -22,22 +22,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/blogs"
-            element={
-              <ProtectedRoute>
-                <Blogs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/blog/:id"
-            element={
-              <ProtectedRoute>
-                <BlogDetail />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route
             path="/create"
             element={

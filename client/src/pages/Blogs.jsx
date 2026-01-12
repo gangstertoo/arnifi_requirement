@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { blogAPI } from '../services/api';
 import BlogCard from '../components/BlogCard';
+import { setMetaTags, clearMetaTags } from '../utils/seo';
 import '../styles/Blogs.css';
 
 const CATEGORIES = ['All', 'Career', 'Finance', 'Travel', 'Technology', 'Lifestyle', 'Other'];
 
 export default function Blogs() {
+  const { isAuthenticated } = useAuth();
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -16,6 +19,8 @@ export default function Blogs() {
 
   useEffect(() => {
     fetchBlogs('All', '');
+    setMetaTags('All Blogs', 'Discover and read amazing blogs from our community. Filter by category or author.');
+    return () => clearMetaTags();
   }, []);
 
   const fetchBlogs = async (category = 'All', author = '') => {
@@ -65,9 +70,11 @@ export default function Blogs() {
     <div className="blogs-container">
       <div className="blogs-header">
         <h1>All Blogs</h1>
-        <Link to="/create" className="create-btn">
-          Create New Blog
-        </Link>
+        {isAuthenticated && (
+          <Link to="/create" className="create-btn">
+            Create New Blog
+          </Link>
+        )}
       </div>
 
       {error && <div className="alert alert--error">{error}</div>}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { blogAPI } from '../services/api';
+import { setMetaTags, clearMetaTags } from '../utils/seo';
 import '../styles/BlogDetail.css';
 
 export default function BlogDetail() {
@@ -24,6 +25,10 @@ export default function BlogDetail() {
     try {
       const response = await blogAPI.getBlogById(id);
       setBlog(response.data.blog);
+
+      // Set SEO meta tags
+      const description = response.data.blog.content.substring(0, 160).replace(/\n/g, ' ');
+      setMetaTags(response.data.blog.title, description, response.data.blog.image);
     } catch (err) {
       console.error('Error fetching blog:', err);
       setError(err.response?.data?.message || 'Failed to fetch blog');
@@ -31,6 +36,10 @@ export default function BlogDetail() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    return () => clearMetaTags();
+  }, []);
 
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this blog?')) {
@@ -145,10 +154,10 @@ export default function BlogDetail() {
           {isAuthor && (
             <div className="blog-detail-actions">
               <button onClick={handleEdit} className="edit-btn">
-                ✏️ Edit Article
+                Edit Article
               </button>
               <button onClick={handleDelete} className="delete-btn">
-                🗑️ Delete Article
+                Delete Article
               </button>
             </div>
           )}

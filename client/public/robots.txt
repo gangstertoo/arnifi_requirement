@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /blogs
+Allow: /blog/
+
+Disallow: /login
+Disallow: /signup
+Disallow: /create
+Disallow: /edit
+Disallow: /my-blogs
+
+Sitemap: http://localhost:5000/sitemap.xml
+
+# Crawl delay and request rate
+Request-rate: 1 request per second

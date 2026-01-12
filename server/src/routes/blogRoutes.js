@@ -11,12 +11,12 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// More specific routes first
+// Public read-only routes (no authentication required)
 router.get('/user/my-blogs', authenticateToken, getUserBlogs);
-router.get('/:id', authenticateToken, getBlogById);
+router.get('/:id', getBlogById);
+router.get('/', getAllBlogs);
 
-// General routes after specific ones
-router.get('/', authenticateToken, getAllBlogs);
+// Protected write operations (require authentication)
 router.post('/', authenticateToken, createBlog);
 router.put('/:id', authenticateToken, updateBlog);
 router.delete('/:id', authenticateToken, deleteBlog);

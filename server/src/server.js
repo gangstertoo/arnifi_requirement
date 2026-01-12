@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import sitemapRoutes from './routes/sitemapRoutes.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ connectDB();
 
 app.use('/auth', authRoutes);
 app.use('/blogs', blogRoutes);
+app.use('/', sitemapRoutes);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' });

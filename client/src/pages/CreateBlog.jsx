@@ -15,6 +15,7 @@ export default function CreateBlog() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const titleLength = formData.title.length;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,71 +44,115 @@ export default function CreateBlog() {
   };
 
   return (
-    <div className="blog-form-container">
-      <div className="blog-form-card">
-        <h1>Create New Blog</h1>
-        {error && <div className="alert alert--error">{error}</div>}
+    <div className="create-blog-page">
+      <div className="create-blog-header">
+        <div className="header-content">
+          <h1>Write a new story</h1>
+          <p>Share your thoughts, ideas, and expertise with the world</p>
+        </div>
+      </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Blog Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="Enter blog title"
-              required
-            />
-          </div>
+      <div className="create-blog-container">
+        <div className="create-blog-card">
+          {error && <div className="alert alert--error">{error}</div>}
 
-          <div className="form-group">
-            <label htmlFor="category">Category</label>
-            <select
-              id="category"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-            >
-              {CATEGORIES.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
+          <form onSubmit={handleSubmit} className="create-form">
+            <div className="form-section">
+              <div className="form-group">
+                <label htmlFor="title" className="form-label-primary">
+                  <span>Story Title</span>
+                  <span className="char-count">{titleLength}/100</span>
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  placeholder="A captivating title..."
+                  maxLength="100"
+                  required
+                  className="title-input"
+                />
+              </div>
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="content">Content</label>
-            <textarea
-              id="content"
-              name="content"
-              value={formData.content}
-              onChange={handleChange}
-              placeholder="Write your blog content here..."
-              rows="10"
-              required
-            ></textarea>
-          </div>
+            <div className="form-section">
+              <div className="form-row">
+                <div className="form-group form-group-half">
+                  <label htmlFor="category" className="form-label">Category</label>
+                  <select
+                    id="category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    required
+                    className="category-select"
+                  >
+                    {CATEGORIES.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-          <div className="form-group">
-            <label htmlFor="image">Image URL (Optional)</label>
-            <input
-              type="url"
-              id="image"
-              name="image"
-              value={formData.image}
-              onChange={handleChange}
-              placeholder="https://example.com/image.jpg"
-            />
-          </div>
+                <div className="form-group form-group-half">
+                  <label htmlFor="image" className="form-label">Featured Image URL</label>
+                  <input
+                    type="url"
+                    id="image"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleChange}
+                    placeholder="https://example.com/image.jpg"
+                    className="image-input"
+                  />
+                </div>
+              </div>
+            </div>
 
-          <button type="submit" disabled={loading} className="submit-btn">
-            {loading ? 'Creating...' : 'Create Blog'}
-          </button>
-        </form>
+            <div className="form-section">
+              <div className="form-group">
+                <label htmlFor="content" className="form-label">Story Content</label>
+                <textarea
+                  id="content"
+                  name="content"
+                  value={formData.content}
+                  onChange={handleChange}
+                  placeholder="Begin writing your story... Share your knowledge, experience, and insights."
+                  rows="15"
+                  required
+                  className="content-textarea"
+                ></textarea>
+              </div>
+            </div>
+
+            <div className="form-actions">
+              <button
+                type="button"
+                onClick={() => navigate('/my-blogs')}
+                className="btn-secondary"
+              >
+                Discard
+              </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-publish"
+              >
+                {loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    Publishing...
+                  </>
+                ) : (
+                  'Publish Story'
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

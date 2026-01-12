@@ -7,23 +7,30 @@ import '../styles/Blogs.css';
 const CATEGORIES = ['All', 'Career', 'Finance', 'Travel', 'Technology', 'Lifestyle', 'Other'];
 
 export default function Blogs() {
-  const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [authorSearchInput, setAuthorSearchInput] = useState('');
   const [authorFilter, setAuthorFilter] = useState('');
 
   useEffect(() => {
-    fetchBlogs();
+    fetchBlogs('All', '');
   }, []);
 
-  const fetchBlogs = async () => {
+  const fetchBlogs = async (category = 'All', author = '') => {
     setLoading(true);
     setError('');
     try {
-      const response = await blogAPI.getAllBlogs();
-      setBlogs(response.data.blogs);
+      const params = {};
+      if (category !== 'All') {
+        params.category = category;
+      }
+      if (author) {
+        params.author = author;
+      }
+
+      const response = await blogAPI.getAllBlogs(params);
       setFilteredBlogs(response.data.blogs);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to fetch blogs');
@@ -32,21 +39,27 @@ export default function Blogs() {
     }
   };
 
+  const handleCategoryChange = (e) => {
+    const newCategory = e.target.value;
+    setSelectedCategory(newCategory);
+    fetchBlogs(newCategory, authorFilter);
+  };
+
+  const handleSearchClick = () => {
+    fetchBlogs(selectedCategory, authorSearchInput);
+    setAuthorFilter(authorSearchInput);
+  };
+
+  const handleResetFilters = () => {
+    setSelectedCategory('All');
+    setAuthorSearchInput('');
+    setAuthorFilter('');
+    fetchBlogs('All', '');
+  };
+
   useEffect(() => {
-    let filtered = blogs;
-
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter((blog) => blog.category === selectedCategory);
-    }
-
-    if (authorFilter) {
-      filtered = filtered.filter((blog) =>
-        blog.author.toLowerCase().includes(authorFilter.toLowerCase())
-      );
-    }
-
-    setFilteredBlogs(filtered);
-  }, [selectedCategory, authorFilter, blogs]);
+    fetchBlogs(selectedCategory, authorFilter);
+  }, [selectedCategory, authorFilter]);
 
   return (
     <div className="blogs-container">
@@ -65,7 +78,7 @@ export default function Blogs() {
           <select
             id="category"
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={handleCategoryChange}
             className="filter-select"
           >
             {CATEGORIES.map((category) => (
@@ -76,17 +89,29 @@ export default function Blogs() {
           </select>
         </div>
 
-        <div className="filter-group">
+        <div className="filter-group filter-author-group">
           <label htmlFor="author">Search by Author</label>
-          <input
-            type="text"
-            id="author"
-            placeholder="Enter author name..."
-            value={authorFilter}
-            onChange={(e) => setAuthorFilter(e.target.value)}
-            className="filter-input"
-          />
+          <div className="author-search-wrapper">
+            <input
+              type="text"
+              id="author"
+              placeholder="Enter author name..."
+              value={authorSearchInput}
+              onChange={(e) => setAuthorSearchInput(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSearchClick()}
+              className="filter-input"
+            />
+            <button onClick={handleSearchClick} className="search-btn">
+              Search
+            </button>
+          </div>
         </div>
+
+        {(selectedCategory !== 'All' || authorFilter) && (
+          <button onClick={handleResetFilters} className="reset-btn">
+            Reset Filters
+          </button>
+        )}
       </div>
 
       {loading ? (

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Blogs from './pages/Blogs';
+import BlogDetail from './pages/BlogDetail';
 import CreateBlog from './pages/CreateBlog';
 import EditBlog from './pages/EditBlog';
 import MyBlogs from './pages/MyBlogs';
@@ -26,6 +27,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Blogs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <ProtectedRoute>
+                <BlogDetail />
               </ProtectedRoute>
             }
           />

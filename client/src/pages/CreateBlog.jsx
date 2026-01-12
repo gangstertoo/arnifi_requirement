@@ -22,6 +22,17 @@ export default function CreateBlog() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, image: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -98,16 +109,30 @@ export default function CreateBlog() {
                 </div>
 
                 <div className="form-group form-group-half">
-                  <label htmlFor="image" className="form-label">Featured Image URL</label>
-                  <input
-                    type="url"
-                    id="image"
-                    name="image"
-                    value={formData.image}
-                    onChange={handleChange}
-                    placeholder="https://example.com/image.jpg"
-                    className="image-input"
-                  />
+                  <label htmlFor="image" className="form-label">Featured Image</label>
+                  <div className="image-upload-wrapper">
+                    <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      onChange={handleImageChange}
+                      accept="image/*"
+                      className="image-upload-input"
+                    />
+                    <label htmlFor="image" className="image-upload-label">
+                      <svg className="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                      </svg>
+                      <span>{formData.image ? 'Change image' : 'Click to upload image'}</span>
+                    </label>
+                    {formData.image && (
+                      <div className="image-preview">
+                        <img src={formData.image} alt="Preview" />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

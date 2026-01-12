@@ -12,7 +12,7 @@
 .create-blog-header {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
-  padding: var(--space-16) var(--space-4);
+  padding: var(--space-6) var(--space-4);
   text-align: center;
   position: sticky;
   top: 80px;
@@ -25,18 +25,18 @@
 }
 
 .create-blog-header h1 {
-  font-size: var(--text-5xl);
+  font-size: var(--text-2xl);
   color: var(--color-text);
   font-weight: var(--font-bold);
-  margin-bottom: var(--space-3);
-  letter-spacing: -0.5px;
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.3px;
 }
 
 .create-blog-header p {
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
   color: var(--color-text-secondary);
   font-weight: var(--font-normal);
-  line-height: var(--line-relaxed);
+  line-height: var(--line-normal);
 }
 
 /* ============================================================================
@@ -210,6 +210,73 @@
 }
 
 /* ============================================================================
+   IMAGE UPLOAD
+   ============================================================================ */
+
+.image-upload-wrapper {
+  position: relative;
+}
+
+.image-upload-input {
+  display: none;
+}
+
+.image-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 180px;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+}
+
+.image-upload-label:hover {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.02) 100%);
+  color: var(--color-primary);
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  color: currentColor;
+  transition: all var(--transition-base);
+}
+
+.image-upload-label:hover .upload-icon {
+  transform: translateY(-4px);
+}
+
+.image-upload-label span {
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.image-preview {
+  margin-top: var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  max-width: 100%;
+  height: 250px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================================
    FORM ACTIONS
    ============================================================================ */
 
@@ -349,15 +416,15 @@
 
 @media (max-width: 768px) {
   .create-blog-header {
-    padding: var(--space-8) var(--space-4);
+    padding: var(--space-4) var(--space-4);
   }
 
   .create-blog-header h1 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl);
   }
 
   .create-blog-header p {
-    font-size: var(--text-base);
+    font-size: var(--text-xs);
   }
 
   .create-blog-container {
@@ -381,6 +448,20 @@
   .content-textarea {
     min-height: 300px;
     font-size: var(--text-base);
+  }
+
+  .image-upload-label {
+    min-height: 140px;
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .upload-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .image-preview {
+    height: 200px;
   }
 
   .form-actions {

@@ -37,7 +37,8 @@ export const signup = async (req, res) => {
       user: {
         id: newUser._id,
         name: newUser.name,
-        email: newUser.email
+        email: newUser.email,
+        createdAt: newUser.createdAt
       }
     });
   } catch (error) {
@@ -75,7 +76,8 @@ export const login = async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        createdAt: user.createdAt
       }
     });
   } catch (error) {

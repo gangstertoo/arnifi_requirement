@@ -1,57 +1,58 @@
-/* Modern Design System - Enhanced Color Palette & Typography */
+/* Modern Design System - Premium Color Palette & Typography */
 
 :root {
-  /* Primary Colors - Modern Blue Gradient */
-  --color-primary: #0066ff;
-  --color-primary-dark: #0052cc;
-  --color-primary-light: #3399ff;
-  --color-primary-lighter: #66b3ff;
+  /* Primary Colors - Sophisticated Deep Blue */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #60a5fa;
+  --color-primary-lighter: #93c5fd;
 
-  /* Secondary Colors - Vibrant Purple */
-  --color-secondary: #7c3aed;
-  --color-secondary-dark: #6d28d9;
-  --color-secondary-light: #a78bfa;
+  /* Secondary Colors - Rich Purple */
+  --color-secondary: #9333ea;
+  --color-secondary-dark: #7e22ce;
+  --color-secondary-light: #d8b4fe;
 
-  /* Accent Colors */
-  --color-accent: #ec4899;
-  --color-accent-light: #f472b6;
+  /* Accent Colors - Modern Rose */
+  --color-accent: #f43f5e;
+  --color-accent-light: #ff80ab;
 
-  /* Status Colors */
-  --color-success: #10b981;
-  --color-success-dark: #059669;
-  --color-success-light: #34d399;
-  --color-warning: #f59e0b;
-  --color-warning-dark: #d97706;
-  --color-danger: #ef4444;
-  --color-danger-dark: #dc2626;
-  --color-danger-light: #fca5a5;
+  /* Status Colors - Professional Palette */
+  --color-success: #16a34a;
+  --color-success-dark: #15803d;
+  --color-success-light: #86efac;
+  --color-warning: #ea580c;
+  --color-warning-dark: #c2410c;
+  --color-danger: #dc2626;
+  --color-danger-dark: #b91c1c;
+  --color-danger-light: #fecaca;
 
-  /* Neutral Colors */
+  /* Neutral Colors - Refined Grayscale */
   --color-dark: #0f172a;
   --color-dark-secondary: #1e293b;
-  --color-text: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748b;
-  --color-text-light: #94a3b8;
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
+  --color-text: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-light: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
   --color-bg: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-bg-tertiary: #f1f5f9;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0066ff 0%, #7c3aed 100%);
-  --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-  --gradient-accent: linear-gradient(135deg, #0066ff 0%, #ec4899 100%);
-  --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  /* Premium Gradients */
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+  --gradient-secondary: linear-gradient(135deg, #9333ea 0%, #f43f5e 100%);
+  --gradient-accent: linear-gradient(135deg, #2563eb 0%, #f43f5e 100%);
+  --gradient-subtle: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  --gradient-dark: linear-gradient(135deg, #1f2937 0%, #111827 100%);
 
-  /* Enhanced Shadow System */
+  /* Professional Shadow System */
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 10px 25px 0 rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px 0 rgba(0, 0, 0, 0.18);
-  --shadow-2xl: 0 25px 50px 0 rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   /* Spacing Scale */
   --space-0: 0;
@@ -95,13 +96,14 @@
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
 
-  /* Enhanced Transitions */
+  /* Smooth Transitions - Professional Timing */
   --transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slower: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Line Heights */
+  /* Line Heights - Optimal Readability */
   --line-tight: 1.25;
   --line-normal: 1.5;
   --line-relaxed: 1.625;

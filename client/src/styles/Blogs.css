@@ -18,30 +18,32 @@
 
 .blogs-header h1 {
   color: var(--color-text);
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
 }
 
 .create-btn {
   background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-dark) 100%);
   color: white;
   padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-lg);
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: var(--font-semibold);
-  transition: all var(--transition-base);
+  font-weight: 700;
+  transition: all var(--transition-smooth);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .create-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
 }
 
 /* ============================================================================
@@ -51,19 +53,19 @@
 .filters-section {
   background: var(--color-bg);
   padding: var(--space-6);
-  border-radius: var(--radius-xl);
+  border-radius: 12px;
   margin-bottom: var(--space-8);
   display: flex;
   gap: var(--space-4);
   flex-wrap: wrap;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border-light);
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   flex: 1;
   min-width: 200px;
 }
@@ -89,66 +91,73 @@
   background: var(--color-primary);
   color: white;
   border: none;
-  border-radius: var(--radius-lg);
-  font-weight: var(--font-semibold);
+  border-radius: 8px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all var(--transition-smooth);
   font-size: var(--text-sm);
   white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .search-btn:hover {
   background: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
 
 .reset-btn {
   background: var(--color-text-muted);
   align-self: flex-end;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .reset-btn:hover {
   background: var(--color-text-secondary);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .filter-group label {
-  font-weight: var(--font-semibold);
+  font-weight: 700;
   color: var(--color-text);
   font-size: var(--text-sm);
+  letter-spacing: 0.3px;
 }
 
 .filter-select,
 .filter-input {
   padding: var(--space-3) var(--space-4);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
   font-size: var(--text-base);
   color: var(--color-text);
   background-color: var(--color-bg);
-  transition: all var(--transition-base);
+  transition: all var(--transition-smooth);
   font-family: inherit;
 }
 
 .filter-select::placeholder,
 .filter-input::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
+  font-weight: 500;
 }
 
 .filter-select:focus,
 .filter-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 .filter-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23111827' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231f2937' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--space-3) center;
   padding-right: var(--space-10);
+  cursor: pointer;
 }
 
 /* ============================================================================

@@ -92,17 +92,20 @@
 
 /* Override button styles for hero section */
 .hero-section .btn--primary {
-  background-color: white;
-  color: var(--color-primary);
+  background-color: #2563eb;
+  color: white;
   font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
   padding: var(--space-4) var(--space-10);
   border-radius: 10px;
   letter-spacing: 0.3px;
   position: relative;
   overflow: hidden;
   transition: all var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-section .btn--primary::before {
@@ -112,6 +115,8 @@
   background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent);
   opacity: 0;
   transition: opacity var(--transition-smooth);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-section .btn--primary:hover:not(:disabled) {
@@ -125,24 +130,24 @@
 }
 
 .hero-section .btn--secondary {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: white;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   font-size: 1rem;
   font-weight: 700;
   padding: var(--space-4) var(--space-10);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   letter-spacing: 0.3px;
-  backdrop-filter: blur(10px);
   transition: all var(--transition-smooth);
 }
 
 .hero-section .btn--secondary:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: white;
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
 }
 
 /* ============================================================================

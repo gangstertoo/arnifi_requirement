@@ -1,6 +1,7 @@
 [build]
 builder = "nixpacks"
+buildCommand = "npm run build"
 
 [deploy]
-startCommand = "npm run build && node build/start.mjs"
+startCommand = "node build/start.mjs"
 restartPolicyMaxRetries = 5

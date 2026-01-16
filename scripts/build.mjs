@@ -16,6 +16,10 @@ const serverDir = path.join(rootDir, 'server');
 async function build() {
   console.log('Building production bundle...\n');
 
+  // Step 0: Install client dependencies
+  console.log('Installing frontend dependencies...');
+  await installClientDependencies();
+
   // Step 1: Build frontend
   console.log('Building frontend...');
   await buildFrontend();
@@ -88,6 +92,30 @@ async function build() {
   console.log('\nTo run the app:');
   console.log('   cd build');
   console.log('   node start.mjs');
+}
+
+function installClientDependencies() {
+  return new Promise((resolve, reject) => {
+    const installProcess = spawn('npm', ['install', '--omit=dev'], {
+      cwd: clientDir,
+      stdio: 'inherit',
+      shell: true
+    });
+
+    installProcess.on('close', (code) => {
+      if (code !== 0) {
+        console.error('Frontend dependency installation failed');
+        reject(new Error('Frontend dependency installation failed'));
+      } else {
+        resolve();
+      }
+    });
+
+    installProcess.on('error', (err) => {
+      console.error('Install process error:', err);
+      reject(err);
+    });
+  });
 }
 
 function buildFrontend() {
